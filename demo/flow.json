@@ -1,0 +1,53 @@
+{
+  "id": "notion-page-freshness",
+  "repositoryId": "notion-mcp",
+  "product": "pipmcp",
+  "connectorId": "notion",
+  "title": "Review stale Notion pages",
+  "promise": "Find shared pages whose last edit is overdue for an owner review.",
+  "sourceRevision": "63b67ac8b1d785682ca60fe86fa7308878cee11bff0fd1c742927042d17d7aa3",
+  "credential": "PIPMCP_API_KEY",
+  "transport": "pipmcp-gateway",
+  "sourceRefs": [
+    "https://raw.githubusercontent.com/makenotion/notion-mcp-server/main/scripts/notion-openapi.json"
+  ],
+  "readTask": {
+    "intent": "Find shared pages whose last edit is overdue for an owner review.",
+    "requiredCapability": "Read-only authorized account data; discover actual names and schemas first"
+  },
+  "synthetic": {
+    "strategy": "score",
+    "field": "daysSinceEdit",
+    "value": 90,
+    "records": [
+      {
+        "id": "synthetic-page-n1",
+        "title": "Synthetic onboarding page",
+        "lastEditedAt": "2026-06-01T00:00:00Z"
+      },
+      {
+        "id": "synthetic-page-n2",
+        "title": "Synthetic weekly plan",
+        "lastEditedAt": "2026-11-07T00:00:00Z"
+      }
+    ],
+    "input": {
+      "limit": 10
+    },
+    "normalization": "Invented normalized review fields demonstrate task logic; live provider schemas and field mappings must be reviewed separately.",
+    "expectedReviewCount": 1,
+    "asOf": "2026-11-08T00:00:00Z",
+    "normalize": {
+      "type": "elapsed-days",
+      "sourceField": "lastEditedAt"
+    }
+  },
+  "livePolicy": {
+    "default": "preflight-only",
+    "explicitReadSelectionRequired": true,
+    "providerWritesAllowed": false,
+    "sandboxWritesRequireSeparateApproval": true
+  },
+  "baseSourceRevision": "bfd103bc47bd8bdc7897a453d2fb9843096fed64386bc354b13d42e2a85c80a9",
+  "releaseVersion": "1.1.0"
+}

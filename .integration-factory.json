@@ -12,7 +12,7 @@
   "maintainer": "jannikco",
   "license": "MIT",
   "attributionSlug": "github-notion-mcp",
-  "sourceRevision": "bfd103bc47bd8bdc7897a453d2fb9843096fed64386bc354b13d42e2a85c80a9",
+  "sourceRevision": "63b67ac8b1d785682ca60fe86fa7308878cee11bff0fd1c742927042d17d7aa3",
   "qualityVersion": 2,
   "artifactType": "connector",
   "evidence": [
@@ -30,7 +30,7 @@
   "appName": "Notion",
   "connectorId": "notion",
   "executionAuthority": "pipmcp-gateway",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "agentReady": true,
   "capabilityEvidence": {
     "local": {
