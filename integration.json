@@ -1,259 +1,60 @@
 {
   "schemaVersion": 1,
-  "status": "ready",
-  "verification": "mock-only",
-  "releaseEligible": true,
-  "maintainer": "jannikco",
-  "license": "MIT",
-  "sourceRevision": "68e3ed3ebfe186dd5ab76d4a612bed31bc3dac97eccf312082b0f764fa3c05b2",
-  "evidence": [
-    "Actual tools/call and direct-provider request contract tests"
-  ],
-  "provenance": [
-    "https://developers.notion.com/reference/post-search"
-  ],
   "id": "notion-mcp",
   "kind": "provider-connector",
   "product": "pipmcp",
   "title": "Notion MCP server",
-  "description": "Verify the connected integration, then search shared notes by title for a meeting briefing.",
-  "operationIds": [
-    "get_bot_user",
-    "search_pages"
+  "description": "Use Notion with AI agents through one PipMCP API key, actual hosted schemas and governed execution.",
+  "status": "ready",
+  "verification": "mock-only",
+  "releaseEligible": true,
+  "operationIds": [],
+  "maintainer": "jannikco",
+  "license": "MIT",
+  "attributionSlug": "github-notion-mcp",
+  "sourceRevision": "bfd103bc47bd8bdc7897a453d2fb9843096fed64386bc354b13d42e2a85c80a9",
+  "qualityVersion": 2,
+  "artifactType": "connector",
+  "evidence": [
+    "Gateway HTTP transport fixtures",
+    "Generated stdio wrapper discovery/call fixtures"
   ],
+  "provenance": [
+    "https://developers.notion.com/reference/post-search"
+  ],
+  "utility": {
+    "problem": "Verify the connected integration, then search shared notes by title for a meeting briefing.",
+    "output": "Actual hosted tool schemas and durable governed execution receipts"
+  },
   "appSlug": "notion",
   "appName": "Notion",
-  "providerDocs": "https://raw.githubusercontent.com/makenotion/notion-mcp-server/main/scripts/notion-openapi.json",
-  "providerWebsite": "https://www.notion.so/",
-  "authentication": {
-    "type": "bearer",
-    "requiredCredentialFields": [
-      "token"
-    ],
-    "settings": {},
-    "requiredHeaderNames": [],
-    "helpUrl": "https://developers.notion.com/guides/get-started/authorization",
-    "tenantRequired": false,
-    "accountParameterNames": []
-  },
-  "attributionSlug": "github-notion-mcp",
-  "artifactType": "connector",
-  "qualityVersion": 2,
   "connectorId": "notion",
-  "connector": {
-    "id": "notion",
-    "name": "Notion",
-    "version": "0.2.0",
-    "baseUrl": "https://api.notion.com/v1",
-    "auth": {
-      "type": "bearer",
-      "env": "NOTION_TOKEN"
-    },
-    "tools": [
-      {
-        "name": "get_bot_user",
-        "description": "Read the integration’s bot user identity.",
-        "method": "GET",
-        "path": "/users/me",
-        "readOnly": true,
-        "inputSchema": {
-          "type": "object",
-          "properties": {},
-          "required": [],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [],
-          "query": {},
-          "body": {}
-        },
-        "sampleArguments": {},
-        "provenance": [
-          "https://developers.notion.com/reference/get-self"
-        ]
-      },
-      {
-        "name": "search_pages",
-        "description": "Search pages and data sources shared with your integration by title.",
-        "method": "POST",
-        "path": "/search",
-        "readOnly": true,
-        "inputSchema": {
-          "type": "object",
-          "properties": {
-            "query": {
-              "type": "string",
-              "maxLength": 512
-            },
-            "page_size": {
-              "type": "integer",
-              "minimum": 1,
-              "maximum": 100
-            },
-            "start_cursor": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 512,
-              "description": "Identifier"
-            }
-          },
-          "required": [],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [],
-          "query": {},
-          "body": {
-            "query": "query",
-            "page_size": "page_size",
-            "start_cursor": "start_cursor"
-          }
-        },
-        "sampleArguments": {
-          "query": "meeting",
-          "page_size": 10
-        },
-        "provenance": [
-          "https://developers.notion.com/reference/post-search"
-        ],
-        "pagination": {
-          "type": "cursor",
-          "cursorInput": "start_cursor",
-          "nextCursorPath": "next_cursor"
-        }
-      }
-    ],
-    "workflow": {
-      "name": "Knowledge search",
-      "description": "Verify the connected integration, then search shared notes by title for a meeting briefing.",
-      "steps": [
-        "get_bot_user",
-        "search_pages"
-      ]
-    },
-    "provenance": [
-      "https://developers.notion.com/reference/post-search"
-    ],
-    "verification": "mock-only",
-    "providerLiveValidation": "not-run",
-    "capabilityEvidence": {
-      "local": {
-        "level": "Tested",
-        "operations": [
-          {
-            "name": "get_bot_user",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          },
-          {
-            "name": "search_pages",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          }
-        ],
-        "evidenceRefs": [
-          "Provider request/stdio contract tests"
-        ],
-        "mode": "local"
-      },
-      "managed": {
-        "level": "Documented",
-        "operations": [
-          {
-            "name": "get_bot_user",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          },
-          {
-            "name": "search_pages",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          }
-        ],
-        "evidenceRefs": [],
-        "mode": "managed"
-      }
-    },
-    "headers": {
-      "Notion-Version": "2025-09-03"
-    },
-    "repoId": "notion-mcp",
-    "appSlug": "notion",
-    "product": "pipmcp",
-    "artifactType": "connector",
-    "sourceRevision": "68e3ed3ebfe186dd5ab76d4a612bed31bc3dac97eccf312082b0f764fa3c05b2",
-    "authentication": {
-      "type": "bearer",
-      "requiredCredentialFields": [
-        "token"
-      ],
-      "settings": {},
-      "requiredHeaderNames": [],
-      "helpUrl": "https://developers.notion.com/guides/get-started/authorization",
-      "tenantRequired": false,
-      "accountParameterNames": []
-    },
-    "managedAvailability": {
-      "status": "listed",
-      "checkedAt": "2026-11-08T12:29:10.433747+00:00"
-    }
-  },
+  "executionAuthority": "pipmcp-gateway",
+  "version": "1.0.0",
+  "agentReady": true,
   "capabilityEvidence": {
     "local": {
       "level": "Tested",
       "operations": [
         {
-          "name": "get_bot_user",
+          "name": "gateway_transport",
           "level": "Tested",
+          "method": "contract-fixture",
           "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
-        },
-        {
-          "name": "search_pages",
-          "level": "Tested",
-          "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
+            "Generated gateway/stdio fixtures"
+          ]
         }
       ],
       "evidenceRefs": [
-        "Provider request/stdio contract tests"
+        "Generated gateway/stdio fixtures"
       ],
       "mode": "local"
     },
     "managed": {
       "level": "Documented",
-      "operations": [
-        {
-          "name": "get_bot_user",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        },
-        {
-          "name": "search_pages",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        }
-      ],
+      "operations": [],
       "evidenceRefs": [],
       "mode": "managed"
     }
-  },
-  "utility": {
-    "problem": "Verify the connected integration, then search shared notes by title for a meeting briefing.",
-    "output": "Actual provider API results through local MCP tools"
   }
 }

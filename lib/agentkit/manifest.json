@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "product": "pipmcp",
+  "credential": "PIPMCP_API_KEY",
+  "skills": [
+    {
+      "name": "pipmcp-notion",
+      "description": "Connect AI agents to Notion using one PipMCP API key and actual hosted tool discovery."
+    }
+  ],
+  "files": {
+    "skills/pipmcp-notion/SKILL.md": "4a831960a9f85f6439ee97e9c91d4e5e23526591b5cf69d5f07184e7cc88b105"
+  }
+}
